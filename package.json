@@ -1,0 +1,15 @@
+{
+  "name": "editor-analysis",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@azure/ai-text-analytics": "^1.0.0-preview.2",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3"
+  }
+}
