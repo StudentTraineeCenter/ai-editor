@@ -13,7 +13,7 @@ app.get("/", function(req, res) {
 });
 app.get("/analyze", function(req, res) {
     const analyze = require("./analyze");
-    analyze.do();
+    analyze.do("This is a Hello World template for GCP, Azure, Watson and AWS");
 });
 app.listen(5000, function() {
     console.log(`Related Pics listening on port ${5000}!`);

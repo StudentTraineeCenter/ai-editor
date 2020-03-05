@@ -1,26 +1,30 @@
 const {
-    TextAnalyticsClient,
-    TextAnalyticsApiKeyCredential
-  } = require("@azure/ai-text-analytics");
+  TextAnalyticsClient,
+  TextAnalyticsApiKeyCredential
+} = require("@azure/ai-text-analytics");
 const credentials = require("./creds.js");
 
 function GetAnalyzed(txt) {
   "use strict";
-  const textAnalyticsClient = new TextAnalyticsClient(credentials.creds.endpoint,  new TextAnalyticsApiKeyCredential(credentials.creds.key));
-  async function linkedEntityRecognition(client){
-
-    const linkedEntityInput = [
-        "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800. During his career at Microsoft, Gates held the positions of chairman, chief executive officer, president and chief software architect, while also being the largest individual shareholder until May 2014."
-    ];
-    const entityResults = await client.recognizeLinkedEntities(linkedEntityInput);
+  const textAnalyticsClient = new TextAnalyticsClient(
+    credentials.creds.endpoint,
+    new TextAnalyticsApiKeyCredential(credentials.creds.key)
+  );
+  async function linkedEntityRecognition(client) {
+    const linkedEntityInput = [txt];
+    const entityResults = await client.recognizeLinkedEntities(
+      linkedEntityInput
+    );
 
     entityResults.forEach(document => {
-        document.entities.forEach(entity => {
-            console.log(`\tName: ${entity.name} \tID: ${entity.id} \tURL: ${entity.url} \tData Source: ${entity.dataSource}`);
-            
+      document.entities.forEach(entity => {
+        console.log(`URL: ${entity.url}`);
+        entity.matches.forEach(match => {
+          console.log(txt.substr(match.offset, match.length + match.offset));
         });
+      });
     });
+  }
+  linkedEntityRecognition(textAnalyticsClient);
 }
-linkedEntityRecognition(textAnalyticsClient);
-}
-exports.do = GetAnalyzed ;
+exports.do = GetAnalyzed;
