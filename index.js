@@ -6,13 +6,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static("views"));
-/*
-app.use(
-    cors({
-      origin: "https://related-pics.now.sh"
-    })
-  );
-*/
+
 app.get("/", function(req, res) {
   res.render("index");
 });
@@ -25,9 +19,17 @@ app.get("/analyze", function(req, res) {
   } = require("@azure/ai-text-analytics");
   const credentials = require("./creds.js");
 
+  function boldenKeyphrases(text, phrases) {
+    var finalText = text;
+    phrases.forEach(keyword => {
+      finalText = finalText.replace(keyword, `<strong>${keyword}</strong>`);
+    });
+    return finalText;
+  }
+
   function encodeHTML(text) {
-    text = text.replace("<", "&lt;");
-    text = text.replace(">", "&gt;");
+    text = text.replace(new RegExp(/</gi), "&lt;");
+    text = text.replace(new RegExp(/>/gi), "&gt;");
     return text;
   }
   function GetAnalyzed(txt) {
@@ -37,27 +39,27 @@ app.get("/analyze", function(req, res) {
       new TextAnalyticsApiKeyCredential(credentials.creds.key)
     );
     async function linkedEntityRecognition(client) {
-      const linkedEntityInput = [txt];
+      const linkedEntityInput = [encodeHTML(txt)];
       const entityResults = await client.recognizeLinkedEntities(
         linkedEntityInput
       );
+      const keyPhraseResult = await client.extractKeyPhrases(linkedEntityInput);
 
+        console.log(keyPhraseResult)
       entityResults.forEach(document => {
         document.entities.forEach(entity => {
-          console.log(`URL: ${entity.url}`);
           entity.matches.forEach(match => {
             return txt.substr(match.offset, match.length + match.offset);
           });
         });
       });
-      console.log(entityResults[0].entities);
-      res.render("analyze", { returnStuff: entityResults[0].entities[1].url });
+      res.render("analyze", { returnStuff: entityResults[0].entities, returnText: boldenKeyphrases(encodeHTML(txt), keyPhraseResult[0].keyPhrases) });
     }
 
     linkedEntityRecognition(textAnalyticsClient);
   }
   const reply = GetAnalyzed(
-    "This is a Hello World template for GCP, Azure, Watson and AWS"
+   req.query.txt || "This is a Hello World template for GCP, Azure, Watson and AWS"
   );
 });
 app.listen(5000, function() {

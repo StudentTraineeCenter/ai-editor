@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text analysis</title>
+    <title>Text analytics</title>
 </head>
-<body>
-    <%- returnStuff %> 
-    <textarea name="" id="" cols="30" rows="10"></textarea>
-    <button>Magic Button to analyze</button>
+<body style="text-align: center;">
+    Psali jste o: 
+    <ol>
+    <br>
+    <% for(url of returnStuff)  { %>
+     <li>   <%- url.url %>  </li><br>
+    <% } %>
+    </ol>
+    <form action="">
+    <textarea name="txt" id="" cols="30" rows="10"></textarea>
+    <br>
+    <button type="submit">Analyzovat</button>
+    </form>
+    <%- returnText %>
 </body>
 <script>
 </script>
