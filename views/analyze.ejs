@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text analytics</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body style="text-align: center;">
-    Psali jste o: 
+    <h2> Psali jste o: </h2>
+
     <ol>
     <br>
     <% for(url of returnStuff)  { %>
@@ -14,7 +16,7 @@
     <% } %>
     </ol>
     <form action="">
-    <textarea name="txt" id="" cols="30" rows="10"></textarea>
+    <textarea name="txt" id="" cols="30" rows="10" placeholder="Váš text"></textarea>
     <br>
     <button type="submit">Analyzovat</button>
     </form>

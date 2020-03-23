@@ -6,6 +6,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static("views"));
+app.use(express.static("assets"));
 
 app.get("/", function(req, res) {
   res.render("index");
