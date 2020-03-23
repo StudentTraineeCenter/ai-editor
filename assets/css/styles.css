@@ -7,4 +7,10 @@ textarea {
 :root {
   font-family: 'Montserrat', sans-serif;
 }
+
+.newText {
+  max-width: 75vw;
+  margin-right: auto;
+  margin-left: auto;
+}
 /*# sourceMappingURL=styles.css.map */
