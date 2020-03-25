@@ -21,7 +21,14 @@ app.get("/", function(req, res) {
     TextAnalyticsClient,
     TextAnalyticsApiKeyCredential
   } = require("@azure/ai-text-analytics");
-  const credentials = require("./creds.js");
+  if(process.env.endpoint) {
+    const key = process.env.key
+    const endpoint = process.env.endpoint
+  } else {
+    const key = require("./creds.js").creds.key;
+    const endpoint = require("./creds.js").creds.endpoint;
+
+  }
 
   function boldenKeyphrases(text, phrases) {
     var finalText = text;
@@ -39,8 +46,8 @@ app.get("/", function(req, res) {
   function GetAnalyzed(txt) {
     "use strict";
     const textAnalyticsClient = new TextAnalyticsClient(
-      credentials.creds.endpoint,
-      new TextAnalyticsApiKeyCredential(credentials.creds.key)
+     endpoint,
+      new TextAnalyticsApiKeyCredential(key)
     );
     async function linkedEntityRecognition(client) {
       const linkedEntityInput = [encodeHTML(txt)];
