@@ -45,8 +45,6 @@ app.get("/analyze", function(req, res) {
         linkedEntityInput
       );
       const keyPhraseResult = await client.extractKeyPhrases(linkedEntityInput);
-
-        console.log(keyPhraseResult)
       entityResults.forEach(document => {
         document.entities.forEach(entity => {
           entity.matches.forEach(match => {
