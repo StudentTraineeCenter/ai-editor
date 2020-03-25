@@ -9,11 +9,12 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static("views"));
 app.use(express.static("assets"));
-
+/*
 app.get("/", function(req, res) {
   res.render("index");
 });
-app.get("/analyze", function(req, res) {
+*/
+app.get("/", function(req, res) {
   const analyze = require("./analyze");
 
   const {
