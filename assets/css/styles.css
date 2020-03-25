@@ -2,6 +2,9 @@
 textarea {
   overflow: auto;
   width: 50vw;
+  max-width: 50vw;
+  min-height: 26px;
+  max-height: 80vh;
 }
 
 :root {
@@ -12,6 +15,7 @@ textarea {
   max-width: 75vw;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 5%;
 }
 
 a {

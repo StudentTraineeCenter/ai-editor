@@ -13,13 +13,17 @@
     <ol>
     <br>
     <% for(url of returnStuff)  { %>
-     <li> <strong><a target="_blank" href="<%-url.url%>"><%- url.url.replace(/_/gi, " ").replace("https://en.wikipedia.org/wiki/", "") %> </a></strong>    </li>
+     <li> <a style="font-weight: bold;" target="_blank" href="<%-url.url%>"><%- url.url.replace(/_/gi, " ").replace("https://en.wikipedia.org/wiki/", "") %> </a> </li>
     <% } %>
     </ol>
     <form action="">
-    <textarea name="txt" id="" cols="30" rows="10" placeholder="Váš text"></textarea>
-    <br>
-    <button type="submit">Analyzovat</button>
+        <div class="row">
+            <div class="input-field col s6 offset-s3 text-red">
+              <textarea placeholder="Váš text" name="txt" id="textarea1"></textarea>
+            </div>
+          </div>
+        <br>
+    <button type="submit" class="btn red">Analyzovat</button>
     </form>
     <div class="newText">
         <%- returnText %>

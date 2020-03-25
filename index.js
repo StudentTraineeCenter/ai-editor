@@ -36,7 +36,7 @@ app.get("/analyze", function(req, res) {
   function boldenKeyphrases(text, phrases) {
     var finalText = text;
     phrases.forEach(keyword => {
-      finalText = finalText.replace(keyword, `<strong>${keyword}</strong>`);
+      finalText = finalText.replace(keyword, `<span style="font-weight: bold;">${keyword}</span>`);
     });
     return finalText;
   }
