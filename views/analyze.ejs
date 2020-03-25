@@ -10,12 +10,12 @@
 <body style="text-align: center;">
     <h2> Psali jste o: </h2>
 
-    <ol>
+    <ul>
     <br>
     <% for(url of returnStuff)  { %>
      <li> <a style="font-weight: bold;" target="_blank" href="<%-url.url%>"><%- url.url.replace(/_/gi, " ").replace("https://en.wikipedia.org/wiki/", "") %> </a> </li>
     <% } %>
-    </ol>
+    </ul>
     <form action="">
         <div class="row">
             <div class="input-field col s6 offset-s3 text-red">
