@@ -1,4 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #222222;
+    color: white;
+  }
+  a, textarea {
+    color: white !important;
+  }
+}
+
 textarea {
   overflow: auto;
   width: 50vw;
@@ -8,7 +18,7 @@ textarea {
 }
 
 :root {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .newText {
@@ -21,5 +31,9 @@ textarea {
 a {
   text-decoration: none;
   color: black;
+}
+
+.wikiUrl {
+  font-weight: bold;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -13,7 +13,7 @@
     <ul>
     <br>
     <% for(url of returnStuff)  { %>
-     <li>- <a style="font-weight: bold;" target="_blank" href="<%-url.url%>"><%- url.url.replace(/_/gi, " ").replace("https://en.wikipedia.org/wiki/", "") %> </a> </li>
+     <li>- <a class="wikiUrl" target="_blank" href="<%-url.url%>"><%- url.url.replace(/_/gi, " ").replace("https://en.wikipedia.org/wiki/", "") %> </a> </li>
     <% } %>
     </ul>
     <form action="">
