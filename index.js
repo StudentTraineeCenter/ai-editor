@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
+const port = process.env.PORT || 5000;
+
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
@@ -61,6 +63,6 @@ app.get("/analyze", function(req, res) {
    req.query.txt || "This is a Hello World template for GCP, Azure, Watson and AWS"
   );
 });
-app.listen(5000, function() {
-  console.log(`Related Pics listening on port ${5000}!`);
+app.listen(port, function() {
+  console.log(`Related Pics listening on port ${port}!`);
 });
