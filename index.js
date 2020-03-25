@@ -21,12 +21,15 @@ app.get("/", function(req, res) {
     TextAnalyticsClient,
     TextAnalyticsApiKeyCredential
   } = require("@azure/ai-text-analytics");
-  if(process.env.endpoint) {
-    const key = process.env.key
-    const endpoint = process.env.endpoint
+
+  let key, endpoint;
+
+  if(typeof process.env.endpoint != "undefined") {
+    key = process.env.key;
+    endpoint = process.env.endpoint;
   } else {
-    const key = require("./creds.js").creds.key;
-    const endpoint = require("./creds.js").creds.endpoint;
+    key = require("./creds.js").creds.key;
+    endpoint = require("./creds.js").creds.endpoint;
 
   }
 
