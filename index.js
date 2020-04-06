@@ -15,7 +15,6 @@ app.get("/", function(req, res) {
 });
 
 app.get("/analyze", function(req, res) {
-  const analyze = require("./analyze");
 
   const {
     TextAnalyticsClient,
