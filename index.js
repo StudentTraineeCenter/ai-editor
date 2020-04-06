@@ -75,5 +75,5 @@ app.get("/analyze", function(req, res) {
   );
 });
 app.listen(port, function() {
-  console.log(`Related Pics listening on port ${port}!`);
+  console.log(`Editor listening on port ${port}!`);
 });
