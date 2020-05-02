@@ -65,7 +65,7 @@ app.get("/analyze", function (req, res) {
         });
       });
       res.render("analyze", {
-        returnStuff: entityResults[0].entities,
+        returnUrls: entityResults[0].entities,
         returnText: boldenKeyphrases(
           encodeHTML(txt),
           keyPhraseResult[0].keyPhrases
