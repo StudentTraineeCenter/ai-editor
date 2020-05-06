@@ -49,7 +49,7 @@ app.get("/", function (req, res) {
     "use strict";
     const textAnalyticsClient = new TextAnalyticsClient(
       endpoint,
-      new TextAnalyticsApiKeyCredential(key)
+      new AzureKeyCredential(key)
     );
     async function linkedEntityRecognition(client) {
       const linkedEntityInput = [encodeHTML(txt)];
