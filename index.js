@@ -32,7 +32,7 @@ app.get("/analyze", function (req, res) {
   }
 
   function boldenKeyphrases(text, phrases) {
-    var finalText = text;
+    let finalText = text;
     phrases.forEach((keyword) => {
       finalText = finalText.replace(
         keyword,
